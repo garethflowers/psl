@@ -10,18 +10,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * <p>Title: ViewLattice </p>
- * <p>Description: Panel object added to the main frame
- *  Draws a 2d lattice and allows cluster highlighting</p>
- * <p>Copyright: Gareth Flowers Copyright (c) 2005</p>
- * <p>Company: Leeds Metropolitan University</p>
+ * ViewLattice Panel object added to the main frame Draws a 2d lattice and
+ * allows cluster highlighting
+ * 
  * @author Gareth Flowers
  * @version 1.0
  */
 class ViewLattice extends Canvas implements MouseListener {
 
     static final long serialVersionUID = 1L;
-    private final int display_node_distance = 5; // Distance between node points (pixels)
+    private final int display_node_distance = 5; // Distance between node points
+                                                 // (pixels)
     private final int display_offset = 10; // Offset from top left (pixels)
     private int view_cluster_number = -666;
     private int lattice_size;
@@ -58,8 +57,10 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Run on mouse click
+     * 
      * @param mouseevent MouseEvent
      */
+    @Override
     public void mouseClicked(MouseEvent mouseevent) {
         // Set cluster as the one nearest the mouse click
         for (int i = array_nodes.length; --i >= 0;) {
@@ -75,34 +76,43 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Run when mouse button pressed
+     * 
      * @param mouseevent MouseEvent
      */
+    @Override
     public void mousePressed(MouseEvent mouseevent) {
     }
 
     /**
      * Run when mouse button released
+     * 
      * @param mouseevent MouseEvent
      */
+    @Override
     public void mouseReleased(MouseEvent mouseevent) {
     }
 
     /**
      * Run when mouse leaves area
+     * 
      * @param mouseevent MouseEvent
      */
+    @Override
     public void mouseExited(MouseEvent mouseevent) {
     }
 
     /**
      * Run when mouse enters area
+     * 
      * @param mouseevent MouseEvent
      */
+    @Override
     public void mouseEntered(MouseEvent mouseevent) {
     }
 
     /**
      * Return the X coordinate from the node
+     * 
      * @param node int
      * @return int
      */
@@ -113,6 +123,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Return the Y coordinate from the node
+     * 
      * @param node int
      * @return int
      */
@@ -123,26 +134,31 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Return the display position of X from the node
+     * 
      * @param node int
      * @return int
      */
     private int display_x(int node) {
-        // Return the X coordinate onscreen display position for the position number
+        // Return the X coordinate onscreen display position for the position
+        // number
         return display_offset + (find_x(node) * display_node_distance);
     }
 
     /**
      * Return the display position of Y from the node
+     * 
      * @param node int
      * @return int
      */
     private int display_y(int node) {
-        // Return the Y coordinate onscreen display position for the position number
+        // Return the Y coordinate onscreen display position for the position
+        // number
         return display_offset + (find_y(node) * display_node_distance);
     }
 
     /**
      * Draw the lattice on the graphics area
+     * 
      * @param cluster int
      */
     protected void draw_lattice(int cluster) {
@@ -174,6 +190,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Update the graphics area
+     * 
      * @param graphic Graphics
      */
     @Override
@@ -185,6 +202,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Return the current cluster number
+     * 
      * @return int
      */
     protected int get_cluster_number() {
@@ -194,6 +212,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Set the current cluster number
+     * 
      * @param cluster_number int
      */
     protected void set_cluster_number(int cluster_number) {

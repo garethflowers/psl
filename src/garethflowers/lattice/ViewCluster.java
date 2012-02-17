@@ -40,14 +40,14 @@ import com.sun.j3d.utils.geometry.Cylinder;
 import com.sun.j3d.utils.geometry.Sphere;
 
 /**
- * <p>Title: ViewCluster</p>
- * <p>Description: Produces a 3D view of a cluster</p>
- * <p>Copyright: Gareth Flowers Copyright (c) 2005</p>
- * <p>Company: Leeds Metropolitan University</p>
+ * ViewCluster Produces a 3D view of a cluster
+ * 
  * @author Gareth Flowers
  * @version 1.0
  */
 class ViewCluster extends Panel {
+
+    private static final long serialVersionUID = 1L;
 
     private int lattice_size;
     private int cluster;
@@ -56,6 +56,7 @@ class ViewCluster extends Panel {
 
     /**
      * Creates new instance of ViewCluster and sets up VirtualEnvironment
+     * 
      * @param nodes int[][]
      * @param size int
      * @param num int
@@ -68,10 +69,11 @@ class ViewCluster extends Panel {
         is_3d = d3;
 
         GraphicsConfigTemplate3D gcTemplate = new GraphicsConfigTemplate3D();
-        GraphicsEnvironment local = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsEnvironment local = GraphicsEnvironment
+                .getLocalGraphicsEnvironment();
         GraphicsDevice screen = local.getDefaultScreenDevice();
-        GraphicsConfiguration configuration = screen.getBestConfiguration(
-                gcTemplate);
+        GraphicsConfiguration configuration = screen
+                .getBestConfiguration(gcTemplate);
         Canvas3D canvas_3d = new Canvas3D(configuration);
 
         Locale locale = new Locale(new VirtualUniverse());
@@ -99,6 +101,7 @@ class ViewCluster extends Panel {
 
     /**
      * Returns the X coordinate of the given node
+     * 
      * @param node int
      * @return int
      */
@@ -108,14 +111,14 @@ class ViewCluster extends Panel {
 
     /**
      * Returns the Y coordinate of the given node
+     * 
      * @param node int
      * @return int
      */
     private int find_y(int node) {
         if (is_3d) {
             // Return the 2D Y coordinate for the position number
-            return (node - ((lattice_size * lattice_size)
-                    * (node / (lattice_size * lattice_size))))
+            return (node - ((lattice_size * lattice_size) * (node / (lattice_size * lattice_size))))
                     / lattice_size;
 
         } else {
@@ -126,6 +129,7 @@ class ViewCluster extends Panel {
 
     /**
      * Returns the Z coordinate of the given node
+     * 
      * @param node int
      * @return int
      */
@@ -136,6 +140,7 @@ class ViewCluster extends Panel {
 
     /**
      * Sets up a view for the 3D viewing
+     * 
      * @param canvas Canvas3D
      * @return BranchGroup
      */
@@ -160,6 +165,7 @@ class ViewCluster extends Panel {
 
     /**
      * Sets up a view for the 3D content
+     * 
      * @return BranchGroup
      */
     private BranchGroup build_content() {
@@ -174,9 +180,8 @@ class ViewCluster extends Panel {
         group.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
 
         appearance.setMaterial(new Material(new Color3f(1f, 0f, 0f),
-                new Color3f(1f, 0f, 0f),
-                new Color3f(1f, 1f, 1f),
-                new Color3f(1f, 0f, 0f), 80f));
+                new Color3f(1f, 0f, 0f), new Color3f(1f, 1f, 1f), new Color3f(
+                        1f, 0f, 0f), 80f));
 
         for (int i = 0; i < array_nodes.length; i++) {
             if (array_nodes[i][1] == cluster) {
@@ -241,24 +246,24 @@ class ViewCluster extends Panel {
                 if (array_nodes[i][0] != -666) {
                     Transform3D trans_cylinder = new Transform3D();
                     if (array_nodes[i][0] <= i - (lattice_size * lattice_size)) {
-                        trans_cylinder.setTranslation(new Vector3f(xc, yc,
-                                zc - half_distance));
+                        trans_cylinder.setTranslation(new Vector3f(xc, yc, zc
+                                - half_distance));
                         trans_cylinder.setRotation(new AxisAngle4f(0, 1, 1,
                                 3.14159f));
-                    } else if (array_nodes[i][0]
-                            >= i + (lattice_size * lattice_size)) {
-                        trans_cylinder.setTranslation(new Vector3f(xc, yc,
-                                zc + half_distance));
+                    } else if (array_nodes[i][0] >= i
+                            + (lattice_size * lattice_size)) {
+                        trans_cylinder.setTranslation(new Vector3f(xc, yc, zc
+                                + half_distance));
                         trans_cylinder.setRotation(new AxisAngle4f(0, 1, 1,
                                 9.42477f));
                     } else if (array_nodes[i][0] < i - 1) {
-                        trans_cylinder.setTranslation(new Vector3f(xc,
-                                yc - half_distance, zc));
+                        trans_cylinder.setTranslation(new Vector3f(xc, yc
+                                - half_distance, zc));
                         trans_cylinder.setRotation(new AxisAngle4f(1, 1, 0,
                                 6.28318f));
                     } else if (array_nodes[i][0] > i + 1) {
-                        trans_cylinder.setTranslation(new Vector3f(xc,
-                                yc + half_distance, zc));
+                        trans_cylinder.setTranslation(new Vector3f(xc, yc
+                                + half_distance, zc));
                     } else if (array_nodes[i][0] < i) {
                         trans_cylinder.setTranslation(new Vector3f(xc
                                 - half_distance, yc, zc));
@@ -308,14 +313,15 @@ class ViewCluster extends Panel {
 
     /**
      * Add a directional light to the 3D scene
+     * 
      * @param branchgroup BranchGroup
      */
     private static void add_lights(BranchGroup branchgroup) {
         DirectionalLight light = new DirectionalLight(new Color3f(0.1f, 1.4f,
                 0.1f), new Vector3f(4.0f, -7.0f, -12.0f));
         light.setEnable(true);
-        light.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0),
-                100.0));
+        light.setInfluencingBounds(new BoundingSphere(
+                new Point3d(0.0, 0.0, 0.0), 100.0));
         branchgroup.addChild(light);
     }
 }

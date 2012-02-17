@@ -1,14 +1,10 @@
 package garethflowers.lattice;
 
-// LatticeApp
-// Import Required Libraries
 import javax.swing.UIManager;
 
 /**
- * <p>Title: Lattice</p>
- * <p>Description: Starts a new instance of Lattice application</p>
- * <p>Copyright: Gareth Flowers Copyright (c) 2005</p>
- * <p>Company: Leeds Metropolitan University</p>
+ * LatticeApp Starts a new instance of Lattice application
+ * 
  * @author Gareth Flowers
  * @version 1.0
  */
@@ -30,6 +26,7 @@ final class LatticeApp {
 
     /**
      * Main
+     * 
      * @param arguments String[]
      */
     public static void main(String[] arguments) {

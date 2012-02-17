@@ -1,8 +1,5 @@
 package garethflowers.lattice;
 
-// Settings
-
-// Import Required Libraries
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -19,15 +16,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- * <p>Title: Settings</p>
- * <p>Description: Settings dialog used when regenerating lattices</p>
- * <p>Copyright: Gareth Flowers Copyright (c) 2005</p>
- * <p>Company: Leeds Metropolitan University</p>
+ * Settings Settings dialog used when regenerating lattices
+ * 
  * @author Gareth Flowers
  * @version 1.0
  */
 class Settings extends Dialog implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
     private int lattice_size;
     private int lattice_numbers;
     private JTextField nl = new JTextField(10);
@@ -39,6 +35,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Creates new instance of settings dialog
+     * 
      * @param frame Frame
      * @param size int
      * @param num int
@@ -86,26 +83,25 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Called by buttons on the dialog
+     * 
      * @param actionevent ActionEvent
      */
+    @Override
     public void actionPerformed(ActionEvent actionevent) {
         if (actionevent.getSource() == apply) {
             try {
-                if ((get_num() <= 0) || (get_num() > 9999)
-                        || (get_size() <= 0)
+                if ((get_num() <= 0) || (get_num() > 9999) || (get_size() <= 0)
                         || (get_size() > 9999)) {
                     JOptionPane.showMessageDialog(this,
                             "You must enter a value between 1 and 9999.",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE);
+                            "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     change = true;
                     setVisible(false);
                 }
             } catch (Exception exception) {
                 JOptionPane.showMessageDialog(this,
-                        "You must enter a value between 1 and 9999.",
-                        "Error",
+                        "You must enter a value between 1 and 9999.", "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
         } else {
@@ -115,6 +111,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Returns the lattice size
+     * 
      * @return int
      */
     protected int get_size() {
@@ -124,6 +121,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Returns number of lattices
+     * 
      * @return int
      */
     protected int get_num() {
@@ -133,6 +131,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Returns the dimension (3D)
+     * 
      * @return boolean
      */
     protected boolean get_is_3d() {
@@ -141,6 +140,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Returns true if the apply button is pressed
+     * 
      * @return boolean
      */
     protected boolean get_changed() {
