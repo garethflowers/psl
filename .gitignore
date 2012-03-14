@@ -1,2 +1,13 @@
+# os files/folders
 .DS_Store
-/bin/*
+
+# editor files/folders
+.project
+build.xml
+manifest.mf
+/build/
+/nbproject/
+
+# generated content
+/bin/
+/dist/
