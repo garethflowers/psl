@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 /**
  * Settings Settings dialog used when regenerating lattices
- * 
+ *
  * @author Gareth Flowers
  * @version 1.0
  */
@@ -35,7 +35,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Creates new instance of settings dialog
-     * 
+     *
      * @param frame Frame
      * @param size int
      * @param num int
@@ -83,7 +83,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Called by buttons on the dialog
-     * 
+     *
      * @param actionevent ActionEvent
      */
     @Override
@@ -111,7 +111,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Returns the lattice size
-     * 
+     *
      * @return int
      */
     protected int get_size() {
@@ -121,7 +121,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Returns number of lattices
-     * 
+     *
      * @return int
      */
     protected int get_num() {
@@ -131,7 +131,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Returns the dimension (3D)
-     * 
+     *
      * @return boolean
      */
     protected boolean get_is_3d() {
@@ -140,7 +140,7 @@ class Settings extends Dialog implements ActionListener {
 
     /**
      * Returns true if the apply button is pressed
-     * 
+     *
      * @return boolean
      */
     protected boolean get_changed() {

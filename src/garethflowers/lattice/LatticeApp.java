@@ -4,7 +4,7 @@ import javax.swing.UIManager;
 
 /**
  * LatticeApp Starts a new instance of Lattice application
- * 
+ *
  * @author Gareth Flowers
  * @version 1.0
  */
@@ -26,7 +26,7 @@ final class LatticeApp {
 
     /**
      * Main
-     * 
+     *
      * @param arguments String[]
      */
     public static void main(String[] arguments) {

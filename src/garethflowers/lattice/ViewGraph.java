@@ -1,7 +1,6 @@
 package garethflowers.lattice;
 
 // ViewGraph
-
 // Import Required Libraries
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * ViewGraph Draw a graph using input results
- * 
+ *
  * @author Gareth Flowers
  * @version 1.0
  */
@@ -40,7 +39,7 @@ class ViewGraph extends Panel {
 
     /**
      * Set the graph variables
-     * 
+     *
      * @param size int
      * @param height int
      * @param type int
@@ -63,40 +62,40 @@ class ViewGraph extends Panel {
         int size = 0;
 
         switch (graph_type) {
-        case 1:
-            // Display Length vs Radius Gyration Graph
-            axis((int) xc, (int) yc, "Length", "Radius of Gyration");
-            size = list_array_results.size();
-            for (int i = size; --i >= 0;) {
-                array_results = (double[][]) list_array_results.get(i);
-                int length = array_results.length;
-                for (int j = length; --j >= 0;) {
-                    graphics.fillOval((int) (xc + array_results[j][1]),
-                            (int) ((yc - array_results[j][8]) - 1.5), 3, 3);
+            case 1:
+                // Display Length vs Radius Gyration Graph
+                axis((int) xc, (int) yc, "Length", "Radius of Gyration");
+                size = list_array_results.size();
+                for (int i = size; --i >= 0;) {
+                    array_results = (double[][]) list_array_results.get(i);
+                    int length = array_results.length;
+                    for (int j = length; --j >= 0;) {
+                        graphics.fillOval((int) (xc + array_results[j][1]),
+                                (int) ((yc - array_results[j][8]) - 1.5), 3, 3);
+                    }
                 }
-            }
-            break;
-        case 2:
-            // Display Width vs Height Graph
-            axis((int) xc, (int) yc, "Width", "Height");
-            size = list_array_results.size();
-            for (int i = size; --i >= 0;) {
-                array_results = (double[][]) list_array_results.get(i);
-                int length = array_results.length;
-                for (int j = length; --j >= 0;) {
-                    graphics.fillOval((int) (xc + array_results[j][5]
-                            * graph_size), (int) (yc - array_results[j][6]
-                            * graph_size), 3, 3);
+                break;
+            case 2:
+                // Display Width vs Height Graph
+                axis((int) xc, (int) yc, "Width", "Height");
+                size = list_array_results.size();
+                for (int i = size; --i >= 0;) {
+                    array_results = (double[][]) list_array_results.get(i);
+                    int length = array_results.length;
+                    for (int j = length; --j >= 0;) {
+                        graphics.fillOval((int) (xc + array_results[j][5]
+                                * graph_size), (int) (yc - array_results[j][6]
+                                * graph_size), 3, 3);
+                    }
                 }
-            }
-            break;
-        default:
+                break;
+            default:
         }
     }
 
     /**
      * Draw and label axis
-     * 
+     *
      * @param xc int
      * @param yc int
      * @param x_label String
@@ -127,7 +126,7 @@ class ViewGraph extends Panel {
     /**
      * Converts a string into seperate letters and writes each letter in a
      * vertical line (from top to bottom)
-     * 
+     *
      * @param text String
      * @param xc int
      * @param yc int
@@ -152,7 +151,7 @@ class ViewGraph extends Panel {
 
     /**
      * Update Graphics
-     * 
+     *
      * @param graphic Graphics
      */
     @Override

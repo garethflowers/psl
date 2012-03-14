@@ -1,7 +1,6 @@
 package garethflowers.lattice;
 
 // ViewLattice
-
 // Import Required Libraries
 import java.awt.Canvas;
 import java.awt.Color;
@@ -12,7 +11,7 @@ import java.awt.event.MouseListener;
 /**
  * ViewLattice Panel object added to the main frame Draws a 2d lattice and
  * allows cluster highlighting
- * 
+ *
  * @author Gareth Flowers
  * @version 1.0
  */
@@ -20,7 +19,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     static final long serialVersionUID = 1L;
     private final int display_node_distance = 5; // Distance between node points
-                                                 // (pixels)
+    // (pixels)
     private final int display_offset = 10; // Offset from top left (pixels)
     private int view_cluster_number = -666;
     private int lattice_size;
@@ -57,7 +56,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Run on mouse click
-     * 
+     *
      * @param mouseevent MouseEvent
      */
     @Override
@@ -76,7 +75,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Run when mouse button pressed
-     * 
+     *
      * @param mouseevent MouseEvent
      */
     @Override
@@ -85,7 +84,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Run when mouse button released
-     * 
+     *
      * @param mouseevent MouseEvent
      */
     @Override
@@ -94,7 +93,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Run when mouse leaves area
-     * 
+     *
      * @param mouseevent MouseEvent
      */
     @Override
@@ -103,7 +102,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Run when mouse enters area
-     * 
+     *
      * @param mouseevent MouseEvent
      */
     @Override
@@ -112,7 +111,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Return the X coordinate from the node
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -123,7 +122,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Return the Y coordinate from the node
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -134,7 +133,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Return the display position of X from the node
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -146,7 +145,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Return the display position of Y from the node
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -158,7 +157,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Draw the lattice on the graphics area
-     * 
+     *
      * @param cluster int
      */
     protected void draw_lattice(int cluster) {
@@ -190,7 +189,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Update the graphics area
-     * 
+     *
      * @param graphic Graphics
      */
     @Override
@@ -202,7 +201,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Return the current cluster number
-     * 
+     *
      * @return int
      */
     protected int get_cluster_number() {
@@ -212,7 +211,7 @@ class ViewLattice extends Canvas implements MouseListener {
 
     /**
      * Set the current cluster number
-     * 
+     *
      * @param cluster_number int
      */
     protected void set_cluster_number(int cluster_number) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Lattice Generates a new lattice and adds random clusters to it.
- * 
+ *
  * @author Gareth Flowers
  * @version 1.0
  */
@@ -17,9 +17,8 @@ class Lattice {
             ex.printStackTrace();
         }
     }
-
     final private int lattice_incoming_nodes = 2; // Total incoming nodes per
-                                                  // node
+    // node
     private int lattice_size; // Size of lattice in nodes
     private int lattice_total_nodes;
     private boolean is_3d;
@@ -29,7 +28,7 @@ class Lattice {
 
     /**
      * When run creates a new lattice and adds links to it
-     * 
+     *
      * @param size int
      * @param d3 boolean
      */
@@ -57,10 +56,9 @@ class Lattice {
     }
 
     /**
-     * Returns the nodes array <br />
-     * nodes[0] = Node Number Connected To <br />
+     * Returns the nodes array <br /> nodes[0] = Node Number Connected To <br />
      * nodes[1] = Cluster Number
-     * 
+     *
      * @return int[][]
      */
     protected int[][] get_nodes() {
@@ -69,7 +67,7 @@ class Lattice {
 
     /**
      * Returns a random number between low and high
-     * 
+     *
      * @param low int
      * @param high int
      * @return int
@@ -80,7 +78,7 @@ class Lattice {
 
     /**
      * Return the X coordinate for the position number
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -90,14 +88,13 @@ class Lattice {
 
     /**
      * Return the Y coordinate for the position number
-     * 
+     *
      * @param node int
      * @return int
      */
     private int find_y(int node) {
         if (is_3d) {
-            return (node - ((lattice_size * lattice_size) * (node / (lattice_size * lattice_size))))
-                    / lattice_size;
+            return (node - ((lattice_size * lattice_size) * (node / (lattice_size * lattice_size)))) / lattice_size;
         } else {
             return node / lattice_size;
         }
@@ -105,7 +102,7 @@ class Lattice {
 
     /**
      * Return the Z coordinate for the position number
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -115,7 +112,7 @@ class Lattice {
 
     /**
      * Return the node number from the x,y coordinates
-     * 
+     *
      * @param point_x int
      * @param point_y int
      * @return int
@@ -126,20 +123,19 @@ class Lattice {
 
     /**
      * Return the node number from the x,y coordinates
-     * 
+     *
      * @param point_x int
      * @param point_y int
      * @param point_z int
      * @return int
      */
     private int find_node(int point_x, int point_y, int point_z) {
-        return (point_z * lattice_size * lattice_size)
-                + (point_y * lattice_size) + point_x;
+        return (point_z * lattice_size * lattice_size) + (point_y * lattice_size) + point_x;
     }
 
     /**
      * Check for a valid coordinate
-     * 
+     *
      * @param px int
      * @param py int
      * @param node_from int
@@ -149,12 +145,7 @@ class Lattice {
         int node_to = find_node(px, py);
 
         try {
-            if ((px >= lattice_size)
-                    || (py >= lattice_size)
-                    || (py < 0)
-                    || (px < 0)
-                    || (nodes[node_to][0] == node_from)
-                    || (nodes[node_to][2] >= lattice_incoming_nodes)
+            if ((px >= lattice_size) || (py >= lattice_size) || (py < 0) || (px < 0) || (nodes[node_to][0] == node_from) || (nodes[node_to][2] >= lattice_incoming_nodes)
                     || ((nodes[node_from][1] == nodes[node_to][1]) && (nodes[node_to][1] != -1))) {
                 return false;
             } else {
@@ -167,7 +158,7 @@ class Lattice {
 
     /**
      * Check for a valid coordinate
-     * 
+     *
      * @param px int
      * @param py int
      * @param pz int
@@ -178,12 +169,7 @@ class Lattice {
         int node_to = find_node(px, py, pz);
 
         try {
-            if (((nodes[node_from][1] == nodes[node_to][1]) && (nodes[node_to][1] != -1))
-                    || (px >= lattice_size)
-                    || (py >= lattice_size)
-                    || (py < 0)
-                    || (px < 0)
-                    || (nodes[node_to][0] == node_from)
+            if (((nodes[node_from][1] == nodes[node_to][1]) && (nodes[node_to][1] != -1)) || (px >= lattice_size) || (py >= lattice_size) || (py < 0) || (px < 0) || (nodes[node_to][0] == node_from)
                     || (nodes[node_to][2] >= lattice_incoming_nodes)) {
                 return false;
             } else {
@@ -195,18 +181,12 @@ class Lattice {
     }
 
     /**
-     * Returns the cluster results array <br />
-     * cluster[0] = Cluster Number <br />
-     * cluster[1] = Weight (number nodes) <br />
-     * cluster[2] = Mass X <br />
-     * cluster[3] = Mass Y <br />
-     * cluster[4] = Mass Z <br />
-     * cluster[5] = Width <br />
-     * cluster[6] = Height <br />
-     * cluster[7] = Depth <br />
-     * cluster[8] = Radius Gyration <br />
-     * cluster[9] = Percolating
-     * 
+     * Returns the cluster results array <br /> cluster[0] = Cluster Number <br
+     * /> cluster[1] = Weight (number nodes) <br /> cluster[2] = Mass X <br />
+     * cluster[3] = Mass Y <br /> cluster[4] = Mass Z <br /> cluster[5] = Width
+     * <br /> cluster[6] = Height <br /> cluster[7] = Depth <br /> cluster[8] =
+     * Radius Gyration <br /> cluster[9] = Percolating
+     *
      * @param nodes int[][]
      * @param size int
      * @return double[][]
@@ -285,8 +265,7 @@ class Lattice {
             // Radius of Gyration
             for (int j = nodes.length; --j >= 0;) {
                 if (nodes[j][1] == (int) cluster[i][0]) {
-                    total += ((find_x(j) - mass_x) * (find_x(j) - mass_x))
-                            + ((find_y(j) - mass_y) * (find_y(j) - mass_y));
+                    total += ((find_x(j) - mass_x) * (find_x(j) - mass_x)) + ((find_y(j) - mass_y) * (find_y(j) - mass_y));
                     if (is_3d) {
                         total += ((find_z(j) - mass_z) * (find_z(j) - mass_z));
                     }
@@ -297,8 +276,7 @@ class Lattice {
 
             // Record a '1' if a percolating cluster
             // otherwise '0' if not
-            if (((min_x == 0) && (max_x == lattice_size - 1))
-                    || ((min_y == 0) && (max_y == lattice_size - 1))) {
+            if (((min_x == 0) && (max_x == lattice_size - 1)) || ((min_y == 0) && (max_y == lattice_size - 1))) {
                 cluster[i][9] = 1;
             } else {
                 cluster[i][9] = 0;
@@ -330,52 +308,41 @@ class Lattice {
             if (is_3d) {
                 int point_z = find_z(node_from);
                 if (valid_coordinate(point_x + 1, point_y, point_z, node_from)) {
-                    valid_points.add(new Integer(find_node(point_x + 1,
-                            point_y, point_z)));
+                    valid_points.add(new Integer(find_node(point_x + 1, point_y, point_z)));
                 }
                 if (valid_coordinate(point_x - 1, point_y, point_z, node_from)) {
-                    valid_points.add(new Integer(find_node(point_x - 1,
-                            point_y, point_z)));
+                    valid_points.add(new Integer(find_node(point_x - 1, point_y, point_z)));
                 }
                 if (valid_coordinate(point_x, point_y + 1, point_z, node_from)) {
-                    valid_points.add(new Integer(find_node(point_x,
-                            point_y + 1, point_z)));
+                    valid_points.add(new Integer(find_node(point_x, point_y + 1, point_z)));
                 }
                 if (valid_coordinate(point_x, point_y - 1, point_z, node_from)) {
-                    valid_points.add(new Integer(find_node(point_x,
-                            point_y - 1, point_z)));
+                    valid_points.add(new Integer(find_node(point_x, point_y - 1, point_z)));
                 }
                 if (valid_coordinate(point_x, point_y, point_z + 1, node_from)) {
-                    valid_points.add(new Integer(find_node(point_x, point_y,
-                            point_z + 1)));
+                    valid_points.add(new Integer(find_node(point_x, point_y, point_z + 1)));
                 }
                 if (valid_coordinate(point_x, point_y, point_z - 1, node_from)) {
-                    valid_points.add(new Integer(find_node(point_x, point_y,
-                            point_z - 1)));
+                    valid_points.add(new Integer(find_node(point_x, point_y, point_z - 1)));
                 }
             } else {
                 if (valid_coordinate(point_x + 1, point_y, node_from)) {
-                    valid_points.add(new Integer(
-                            find_node(point_x + 1, point_y)));
+                    valid_points.add(new Integer(find_node(point_x + 1, point_y)));
                 }
                 if (valid_coordinate(point_x - 1, point_y, node_from)) {
-                    valid_points.add(new Integer(
-                            find_node(point_x - 1, point_y)));
+                    valid_points.add(new Integer(find_node(point_x - 1, point_y)));
                 }
                 if (valid_coordinate(point_x, point_y + 1, node_from)) {
-                    valid_points.add(new Integer(
-                            find_node(point_x, point_y + 1)));
+                    valid_points.add(new Integer(find_node(point_x, point_y + 1)));
                 }
                 if (valid_coordinate(point_x, point_y - 1, node_from)) {
-                    valid_points.add(new Integer(
-                            find_node(point_x, point_y - 1)));
+                    valid_points.add(new Integer(find_node(point_x, point_y - 1)));
                 }
             }
 
             if (valid_points.size() > 0) {
                 // If there is a valid node
-                int node_to = valid_points
-                        .get(rand(0, valid_points.size() - 1)).intValue();
+                int node_to = valid_points.get(rand(0, valid_points.size() - 1)).intValue();
 
                 nodes[node_from][0] = node_to;
 
@@ -386,11 +353,9 @@ class Lattice {
                     } else if (nodes[node_to][1] < nodes[node_from][1]) {
                         replace_nodes(nodes[node_from][1], node_to);
                     }
-                } else if ((nodes[node_from][1] > -1)
-                        && (nodes[node_to][1] == -1)) {
+                } else if ((nodes[node_from][1] > -1) && (nodes[node_to][1] == -1)) {
                     nodes[node_to][1] = nodes[node_from][1];
-                } else if ((nodes[node_from][1] == -1)
-                        && (nodes[node_to][1] > -1)) {
+                } else if ((nodes[node_from][1] == -1) && (nodes[node_to][1] > -1)) {
                     nodes[node_from][1] = nodes[node_to][1];
                 } else {
                     cluster_number++;
@@ -410,7 +375,7 @@ class Lattice {
 
     /**
      * Replaces all instances of 'from' with 'to' in the 'nodes' array
-     * 
+     *
      * @param from int
      * @param to int
      */

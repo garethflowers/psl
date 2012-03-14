@@ -1,36 +1,14 @@
 package garethflowers.lattice;
 
-import java.awt.BorderLayout;
-import java.awt.FileDialog;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.KeyStroke;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
@@ -38,12 +16,11 @@ import javax.swing.event.ListSelectionListener;
 
 /**
  * MainFrame Main frame for all views
- * 
+ *
  * @author GarethFlowers
  * @version 1.0
  */
-class MainFrame extends JFrame implements ActionListener,
-        ListSelectionListener, ChangeListener {
+class MainFrame extends JFrame implements ActionListener, ListSelectionListener, ChangeListener {
 
     /**
      *
@@ -57,10 +34,8 @@ class MainFrame extends JFrame implements ActionListener,
     private int lattice_numbers;
     // Create new variables and objects
     private int lattice_size;
-    private final ArrayList<int[][]> list_array_nodes = new ArrayList<int[][]>(
-            0);
-    private final ArrayList<int[][]> list_array_results = new ArrayList<int[][]>(
-            0);
+    private final ArrayList<int[][]> list_array_nodes = new ArrayList<int[][]>(0);
+    private final ArrayList<int[][]> list_array_results = new ArrayList<int[][]>(0);
     private final JList list_clusters = new JList();
     private final JList list_lattices = new JList();
     private final JPanel list_panel = new JPanel(new GridLayout(2, 1));
@@ -71,8 +46,7 @@ class MainFrame extends JFrame implements ActionListener,
     // new MenuShortcut(KeyEvent.VK_E));
     private final JMenuItem menu_file_load = new JMenuItem("Load Results");
     // new MenuShortcut(KeyEvent.VK_L));
-    private final JMenuItem menu_file_new = new JMenuItem(
-            "Generate New Lattices");
+    private final JMenuItem menu_file_new = new JMenuItem("Generate New Lattices");
     // new MenuShortcut(KeyEvent.VK_N));
     private final JMenuItem menu_file_save = new JMenuItem("Save Results");
     // new MenuShortcut(KeyEvent.VK_S));
@@ -80,8 +54,7 @@ class MainFrame extends JFrame implements ActionListener,
     private final JMenuItem menu_view_cluster = new JMenuItem("Cluster");
     // new MenuShortcut(KeyEvent.VK_C));
     private final JMenu menu_view_graph = new JMenu("Graphs");
-    private final JMenuItem menu_view_graph_1 = new JMenuItem(
-            "Radius of Gyration / Length of Cluster");
+    private final JMenuItem menu_view_graph_1 = new JMenuItem("Radius of Gyration / Length of Cluster");
     // new MenuShortcut(KeyEvent.VK_1));
     private final JMenuItem menu_view_graph_2 = new JMenuItem("Height / Width");
     // new MenuShortcut(KeyEvent.VK_2));
@@ -89,9 +62,7 @@ class MainFrame extends JFrame implements ActionListener,
     private final JMenuItem menu_view_output = new JMenuItem("Show Output");
     // new MenuShortcut(KeyEvent.VK_O));
     private int percolating_cluster;
-    private final JScrollPane scroll = new JScrollPane(this.view_output,
-            ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+    private final JScrollPane scroll = new JScrollPane(this.view_output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
     private final Settings settings = new Settings(this, 10, 1);
     private final String spacer = "                    ";
     private ViewCluster view_cluster;
@@ -141,8 +112,7 @@ class MainFrame extends JFrame implements ActionListener,
             // Create wait dialog
             this.wait_dialog = new JDialog(this, "");
             final JPanel wait_panel = new JPanel(new GridLayout(2, 1));
-            final JLabel label = new JLabel(
-                    "Please wait while the lattice information is being generated...");
+            final JLabel label = new JLabel("Please wait while the lattice information is being generated...");
             label.setFont(new Font("Arial", Font.BOLD, 14));
             wait_panel.add(label);
             // Added after evaluation
@@ -166,19 +136,12 @@ class MainFrame extends JFrame implements ActionListener,
             this.list_panel.setVisible(false);
 
             // Create tabs for different views
-            this.main_tab_pane.addTab(this.spacer + "Output" + this.spacer,
-                    this.scroll);
-            this.main_tab_pane.addTab(this.spacer + "Graph" + this.spacer,
-                    this.graph_tab_pane);
-            this.graph_tab_pane.addTab(this.spacer
-                    + "Radius of Gyration vs Length" + this.spacer,
-                    this.view_graph_1);
-            this.graph_tab_pane.addTab(this.spacer + "Height vs Width"
-                    + this.spacer, this.view_graph_2);
-            this.main_tab_pane.addTab(this.spacer + "2D Lattice" + this.spacer,
-                    this.view_lattice);
-            this.main_tab_pane.addTab(this.spacer + "3D Cluster" + this.spacer,
-                    this.view_cluster);
+            this.main_tab_pane.addTab(this.spacer + "Output" + this.spacer, this.scroll);
+            this.main_tab_pane.addTab(this.spacer + "Graph" + this.spacer, this.graph_tab_pane);
+            this.graph_tab_pane.addTab(this.spacer + "Radius of Gyration vs Length" + this.spacer, this.view_graph_1);
+            this.graph_tab_pane.addTab(this.spacer + "Height vs Width" + this.spacer, this.view_graph_2);
+            this.main_tab_pane.addTab(this.spacer + "2D Lattice" + this.spacer, this.view_lattice);
+            this.main_tab_pane.addTab(this.spacer + "3D Cluster" + this.spacer, this.view_cluster);
             this.main_tab_pane.setSelectedIndex(0);
             this.main_tab_pane.addChangeListener(this);
             this.add(this.main_tab_pane);
@@ -199,7 +162,7 @@ class MainFrame extends JFrame implements ActionListener,
 
     /**
      * Run when a button or menu item is clicked
-     * 
+     *
      * @param actionevent ActionEvent
      */
     @Override
@@ -210,8 +173,7 @@ class MainFrame extends JFrame implements ActionListener,
         } else if (actionevent.getSource() == this.menu_file_new) {
             this.settings.open();
             if (this.settings.get_changed()) {
-                this.get_lattice_info(this.settings.get_size(),
-                        this.settings.get_num(), this.settings.get_is_3d());
+                this.get_lattice_info(this.settings.get_size(), this.settings.get_num(), this.settings.get_is_3d());
             }
         } else if (actionevent.getSource() == this.menu_file_save) {
             this.save_file();
@@ -242,28 +204,20 @@ class MainFrame extends JFrame implements ActionListener,
         this.get_lattice_results(0);
         this.array_nodes = this.list_array_nodes.get(0);
 
-        this.view_cluster = new ViewCluster(this.array_nodes,
-                this.lattice_size, this.percolating_cluster, this.is_3d);
-        this.view_lattice.set(this.lattice_size, this.percolating_cluster,
-                this.array_nodes);
+        this.view_cluster = new ViewCluster(this.array_nodes, this.lattice_size, this.percolating_cluster, this.is_3d);
+        this.view_lattice.set(this.lattice_size, this.percolating_cluster, this.array_nodes);
         if (this.is_3d) {
-            this.view_graph_1.set(this.lattice_size * this.lattice_size
-                    * this.lattice_size, this.graph_tab_pane.getHeight(), 1,
-                    this.list_array_results);
+            this.view_graph_1.set(this.lattice_size * this.lattice_size * this.lattice_size, this.graph_tab_pane.getHeight(), 1, this.list_array_results);
         } else {
-            this.view_graph_1
-                    .set(this.lattice_size * this.lattice_size,
-                            this.graph_tab_pane.getHeight(), 1,
-                            this.list_array_results);
+            this.view_graph_1.set(this.lattice_size * this.lattice_size, this.graph_tab_pane.getHeight(), 1, this.list_array_results);
         }
-        this.view_graph_2.set(this.lattice_size,
-                this.graph_tab_pane.getHeight(), 2, this.list_array_results);
+        this.view_graph_2.set(this.lattice_size, this.graph_tab_pane.getHeight(), 2, this.list_array_results);
 
         this.output();
     }
 
     /**
-     * Empties cuurent arraylists and lists
+     * Empties current array lists and lists
      */
     private void empty_objects() {
         this.percolating_cluster = -1;
@@ -275,7 +229,7 @@ class MainFrame extends JFrame implements ActionListener,
 
     /**
      * Creates new lattices and gets all results using values from Settings()
-     * 
+     *
      * @param size
      * @param num
      * @param dim
@@ -297,8 +251,7 @@ class MainFrame extends JFrame implements ActionListener,
             this.array_results = this.lattice.get_results(this.array_nodes,
                     this.lattice_size);
             this.list_array_results.add(this.array_results);
-            this.list_lattices.add((i + 1) + " (" + this.array_results.length
-                    + ")");
+            this.list_lattices.add((i + 1) + " (" + this.array_results.length + ")");
         }
 
         this.create_views();
@@ -307,8 +260,8 @@ class MainFrame extends JFrame implements ActionListener,
 
     /**
      * Gets lattice results from ViewLattice class
-     * 
-     * @param num int
+     *
+     * @param num integer
      */
     private void get_lattice_results(final int num) {
         double temp_size = 0;
@@ -321,8 +274,7 @@ class MainFrame extends JFrame implements ActionListener,
                 this.percolating_cluster = (int) this.array_results[i][0];
                 temp_size = this.array_results[i][1];
             }
-            this.list_clusters.add((i + 1) + " ("
-                    + (int) this.array_results[i][1] + ")");
+            this.list_clusters.add((i + 1) + " (" + (int) this.array_results[i][1] + ")");
         }
     }
 
@@ -330,9 +282,7 @@ class MainFrame extends JFrame implements ActionListener,
      * Hides all GUI before lattice is generated
      */
     private void hide_gui() {
-        this.wait_dialog.setLocation(
-                (this.getWidth() / 2) - (this.wait_dialog.getWidth() / 2),
-                (this.getHeight() / 2) - (this.wait_dialog.getHeight() / 2));
+        this.wait_dialog.setLocation((this.getWidth() / 2) - (this.wait_dialog.getWidth() / 2), (this.getHeight() / 2) - (this.wait_dialog.getHeight() / 2));
         this.wait_dialog.setFont(new Font("Arial", Font.BOLD, 12));
         this.wait_dialog.setResizable(false);
         this.wait_dialog.setVisible(true);
@@ -347,7 +297,7 @@ class MainFrame extends JFrame implements ActionListener,
 
     /**
      * Perform action when list selection changes
-     * 
+     *
      * @param itemevent ItemEvent
      * @param itemevent thing
      */
@@ -362,25 +312,18 @@ class MainFrame extends JFrame implements ActionListener,
             this.get_lattice_results(index);
 
             // Update current view with new lattice
-            this.view_lattice.set(this.lattice_size, this.percolating_cluster,
-                    this.array_nodes);
-            this.view_cluster = new ViewCluster(this.array_nodes,
-                    this.lattice_size, (int) this.array_results[0][0],
-                    this.is_3d);
+            this.view_lattice.set(this.lattice_size, this.percolating_cluster, this.array_nodes);
+            this.view_cluster = new ViewCluster(this.array_nodes, this.lattice_size, (int) this.array_results[0][0], this.is_3d);
         } else if (itemevent.getSource() == this.list_clusters) {
             index = this.list_clusters.getSelectedIndex();
             // Update current view with new lattice
-            this.view_lattice
-                    .set_cluster_number((int) this.array_results[index][0]);
-            this.view_cluster = new ViewCluster(this.array_nodes,
-                    this.lattice_size, (int) this.array_results[index][0],
-                    this.is_3d);
+            this.view_lattice.set_cluster_number((int) this.array_results[index][0]);
+            this.view_cluster = new ViewCluster(this.array_nodes, this.lattice_size, (int) this.array_results[index][0], this.is_3d);
         }
 
         final int current_view = this.main_tab_pane.getSelectedIndex();
         this.main_tab_pane.remove(3);
-        this.main_tab_pane.add(this.view_cluster, this.spacer + "3D Cluster"
-                + this.spacer);
+        this.main_tab_pane.add(this.view_cluster, this.spacer + "3D Cluster" + this.spacer);
         this.main_tab_pane.setSelectedIndex(current_view);
 
     }
@@ -409,8 +352,7 @@ class MainFrame extends JFrame implements ActionListener,
                         filereader);
 
                 // Load information from file
-                this.lattice_numbers = Integer.parseInt(bufferedreader
-                        .readLine());
+                this.lattice_numbers = Integer.parseInt(bufferedreader.readLine());
                 this.lattice_size = Integer.parseInt(bufferedreader.readLine());
                 int lattice_total_nodes = this.lattice_size * this.lattice_size;
                 if (bufferedreader.readLine().equals("true")) {
@@ -424,10 +366,8 @@ class MainFrame extends JFrame implements ActionListener,
 
                 for (int i = this.lattice_numbers; --i >= 0;) {
                     for (int j = this.array_nodes.length; --j >= 0;) {
-                        this.array_nodes[j][0] = Integer
-                                .parseInt(bufferedreader.readLine());
-                        this.array_nodes[j][1] = Integer
-                                .parseInt(bufferedreader.readLine());
+                        this.array_nodes[j][0] = Integer.parseInt(bufferedreader.readLine());
+                        this.array_nodes[j][1] = Integer.parseInt(bufferedreader.readLine());
                     }
 
                     this.list_array_nodes.add(this.array_nodes);
@@ -460,26 +400,25 @@ class MainFrame extends JFrame implements ActionListener,
         final String dline = "=========================================="
                 + "=========================================";
 
-        this.view_output
-                .setText("Number of Lattices :: "
-                        + tb
-                        + tb
-                        + this.lattice_numbers
-                        + bl
-                        + "Lattice size :: "
-                        + tb
-                        + tb
-                        + this.lattice_size
-                        + bl
-                        + "Number of nodes per latice :: "
-                        + tb
-                        + (this.lattice_size * this.lattice_size)
-                        + bl
-                        + "Total nodes analysed :: "
-                        + tb
-                        + (this.lattice_size * this.lattice_size * this.lattice_numbers)
-                        + bl + bl + bl + dline + bl + "Lattice" + tb
-                        + "Clusters" + tb + "Perc Clusters");
+        this.view_output.setText("Number of Lattices :: "
+                + tb
+                + tb
+                + this.lattice_numbers
+                + bl
+                + "Lattice size :: "
+                + tb
+                + tb
+                + this.lattice_size
+                + bl
+                + "Number of nodes per latice :: "
+                + tb
+                + (this.lattice_size * this.lattice_size)
+                + bl
+                + "Total nodes analysed :: "
+                + tb
+                + (this.lattice_size * this.lattice_size * this.lattice_numbers)
+                + bl + bl + bl + dline + bl + "Lattice" + tb
+                + "Clusters" + tb + "Perc Clusters");
 
         for (int i = 0; i < this.lattice_numbers; i++) {
             int perc_cluster = 0;
@@ -581,7 +520,7 @@ class MainFrame extends JFrame implements ActionListener,
 
     /**
      * Run when the tabbed pane is changed
-     * 
+     *
      * @param changeevent ChangeEvent
      */
     @Override
@@ -609,6 +548,5 @@ class MainFrame extends JFrame implements ActionListener,
     @Override
     public void valueChanged(ListSelectionEvent arg0) {
         // TODO Auto-generated method stub
-
     }
 }

@@ -1,7 +1,6 @@
 package garethflowers.lattice;
 
 // ViewCluster
-
 // Import Required Libraries
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -41,14 +40,13 @@ import com.sun.j3d.utils.geometry.Sphere;
 
 /**
  * ViewCluster Produces a 3D view of a cluster
- * 
+ *
  * @author Gareth Flowers
  * @version 1.0
  */
 class ViewCluster extends Panel {
 
     private static final long serialVersionUID = 1L;
-
     private int lattice_size;
     private int cluster;
     private int[][] array_nodes;
@@ -56,7 +54,7 @@ class ViewCluster extends Panel {
 
     /**
      * Creates new instance of ViewCluster and sets up VirtualEnvironment
-     * 
+     *
      * @param nodes int[][]
      * @param size int
      * @param num int
@@ -69,11 +67,9 @@ class ViewCluster extends Panel {
         is_3d = d3;
 
         GraphicsConfigTemplate3D gcTemplate = new GraphicsConfigTemplate3D();
-        GraphicsEnvironment local = GraphicsEnvironment
-                .getLocalGraphicsEnvironment();
+        GraphicsEnvironment local = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice screen = local.getDefaultScreenDevice();
-        GraphicsConfiguration configuration = screen
-                .getBestConfiguration(gcTemplate);
+        GraphicsConfiguration configuration = screen.getBestConfiguration(gcTemplate);
         Canvas3D canvas_3d = new Canvas3D(configuration);
 
         Locale locale = new Locale(new VirtualUniverse());
@@ -101,7 +97,7 @@ class ViewCluster extends Panel {
 
     /**
      * Returns the X coordinate of the given node
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -111,7 +107,7 @@ class ViewCluster extends Panel {
 
     /**
      * Returns the Y coordinate of the given node
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -129,7 +125,7 @@ class ViewCluster extends Panel {
 
     /**
      * Returns the Z coordinate of the given node
-     * 
+     *
      * @param node int
      * @return int
      */
@@ -140,7 +136,7 @@ class ViewCluster extends Panel {
 
     /**
      * Sets up a view for the 3D viewing
-     * 
+     *
      * @param canvas Canvas3D
      * @return BranchGroup
      */
@@ -165,7 +161,7 @@ class ViewCluster extends Panel {
 
     /**
      * Sets up a view for the 3D content
-     * 
+     *
      * @return BranchGroup
      */
     private BranchGroup build_content() {
@@ -181,7 +177,7 @@ class ViewCluster extends Panel {
 
         appearance.setMaterial(new Material(new Color3f(1f, 0f, 0f),
                 new Color3f(1f, 0f, 0f), new Color3f(1f, 1f, 1f), new Color3f(
-                        1f, 0f, 0f), 80f));
+                1f, 0f, 0f), 80f));
 
         for (int i = 0; i < array_nodes.length; i++) {
             if (array_nodes[i][1] == cluster) {
@@ -313,7 +309,7 @@ class ViewCluster extends Panel {
 
     /**
      * Add a directional light to the 3D scene
-     * 
+     *
      * @param branchgroup BranchGroup
      */
     private static void add_lights(BranchGroup branchgroup) {
