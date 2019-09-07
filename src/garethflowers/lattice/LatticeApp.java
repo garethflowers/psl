@@ -10,27 +10,27 @@ import javax.swing.UIManager;
  */
 final class LatticeApp {
 
-    /**
-     * Starts a new instance of 'MainFrame'
-     */
-    private LatticeApp() {
-        try {
-            // UI Manager used to set look of program to the current OS
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            // Create new MainFrame
-            new MainFrame();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
+	/**
+	 * Starts a new instance of 'MainFrame'
+	 */
+	private LatticeApp() {
+		try {
+			// UI Manager used to set look of program to the current OS
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			// Create new MainFrame
+			new MainFrame();
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+	}
 
-    /**
-     * Main
-     *
-     * @param arguments String[]
-     */
-    public static void main(String[] arguments) {
-        // Create application frame
-        new LatticeApp();
-    }
+	/**
+	 * Main
+	 *
+	 * @param arguments String[]
+	 */
+	public static void main(String[] arguments) {
+		// Create application frame
+		new LatticeApp();
+	}
 }
