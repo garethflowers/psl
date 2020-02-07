@@ -4,7 +4,7 @@ layout: default
 
 # Percolation on a Square Lattice
 
-Undergraduate Dissertation by Gareth Flowers
+Undergraduate Dissertation by [Gareth Flowers](https://garethflowers.dev)
 
 1<sup>st</sup> Supervisor - Louise Richards
 
