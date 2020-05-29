@@ -94,9 +94,8 @@ of data associated with the lattice and its clusters.
 
 Attempts will be made to create a graphical user interface that will enable a
 user to generate a series of lattices of different sizes, from which results can
-be processed.
-
-The creation of a visual display of the lattice and cluster will also be tried.
+be processed. The creation of a visual display of the lattice and cluster will
+also be tried.
 
 # Context (Literature Review)
 
@@ -105,19 +104,20 @@ The creation of a visual display of the lattice and cluster will also be tried.
 ### 1.1.1 What is Percolation Theory?
 
 > Percolation theory was developed to mathematically deal with disordered media.
-> (Bentz, D.P. and Garboczi, E.J., 1991)
+>
+> _Bentz, D.P. and Garboczi, E.J., 1991_
 
 The theory of percolation has been used by mathematicians to look at the
 connectivity features of a disordered material. The start of the theory is
 usually associated with Broadbent and Hammersley s 1957 publication that
 introduced the mathematical aspects of using geometrical and probabilistic
-concepts <cite>(Stauffer and Aharony, 1994)</cite>. To describe percolation
-theory it is often best to present an example that illuminates the most
-important features, from which one can identify with the insights gained
-obtaining a more formal definition Consider a large array of squares, known by
-physicists as a square lattice, which most can physically identify with a large
-sheet of graph paper. On this grid a random fraction of squares can be filled
-with a dot, the remainder of which remain empty.
+concepts _(Stauffer and Aharony, 1994)_. To describe percolation theory it is
+often best to present an example that illuminates the most important features,
+from which one can identify with the insights gained obtaining a more formal
+definition Consider a large array of squares, known by physicists as a square
+lattice, which most can physically identify with a large sheet of graph paper.
+On this grid a random fraction of squares can be filled with a dot, the
+remainder of which remain empty.
 
 ![figure1](assets/figure-1.png)
 
@@ -142,7 +142,7 @@ call the chances of a given site having a dot in it probability `p`, and so the
 number of points occupied within the lattice will be `pN` (where is the total
 number of squares). Percolating clusters are created when the probability
 reaches a certain point, for example a square lattice such as this will create a
-percolating cluster when `p` reaches 0.59 (<b>_p<sub>c</sub>_</b> &gt;= 0.59)
+percolating cluster when `p` reaches 0.59 (**_p<sub>c</sub>_** &gt;= 0.59)
 (Stauffer and Aharony, 1994).
 
 There are two main types of percolation bond percolation, and site percolation
@@ -665,104 +665,70 @@ in section 3.1.2, previously, upon the generation of the lattice.
 These events are listed below in detail (bulleted numbers refer to the event
 number in the hierarchical task analysis).
 
-<ol>
-	<li>
-		<p>An initial lattice must be built. This should be an array of
-			nodes (known subsequently as the nodes array) initially set to
-			the required lattice size squared for a 2-dimensional lattice,
-			or to the lattice size cubed for a 3dimensional lattice. As well
-			as constructing a nodes array the construction of a clusters
-			array, that is of equal size, is also required. The nodes array
-			is used to store the _to_ node, and the clusters array
-			stores the cluster number to which the node is assigned.</p>
-		<p>e.g. for lattice size 200 the array would have to be:</p>
-		<ul>
-			<li>2D - 200<sup>2</sup> = 40000</li>
-			<li>3D - 200<sup>3</sup> = 8000000</li>
-		</ul>
-		<p>Each of the nodes within the array is a reference to a single
-			node on the lattice.</p>
-	</li>
-	<li>
-		<p>A link must be added between two nodes on the lattice by using
-			the following steps.</p>
-		<ol>
-			<li>
-				<p>A node must be chosen at random. This random node should
-					be chosen according to the rules of the simple Monte
-					Carlo method (that is that there is an equal probability
-					of any node being chosen), refer to section 1.2 for more
-					information. If this node has not already got an
-					outgoing link to another node then we can continue to
-					stage 2.2.</p>
-			</li>
-			<li>
-				<p>A suitable check needs to be made to see if any of the
-					surrounding nodes are available to form a link to. On a
-					2-dimensional lattice the checks need to be made to the
-					nodes directly to the left, right, upper and lower of
-					the random nodes. In the 3-dimensional lattice the check
-					needs to also to the nodes in front and behind the
-					random node. The check is to see whether the value of
-					the array at the random node value is empty or not. The
-					check on each of these nodes is to search the entire
-					nodes array to see how many _from nodes_ link to
-					that check node. If the number of _from nodes
-					_linking to the check node is equal to or greater
-					than the value detailed in the specification (two) then
-					the check node is no good and must be discarded.
-					Otherwise, if there are less than two nodes linking to
-					it, the check node is good and can be used in the next
-					stage.</p>
-			</li>
-			<li>
-				<p>After 2.2 has been performed there should be several good
-					or bad nodes listed. A random choice is again needed to
-					select one of the good nodes. The random choice should
-					again conform to the simple Monte Carlo method and apply
-					equal probabilities of each good choice being chosen.
-				</p>
-			</li>
-			<li>
-				<p>Once the chosen node has been selected then a link can be
-					created. This is recorded in the nodes array by settings
-					the value at the index of the _from_ node to the
-					_to_ node.</p>
-				<p>e.g. if node 10 is connected to node 9 then: nodes array
-					(10) = 9</p>
-			</li>
-		</ol>
-	</li>
-	<li>
-		<p>Event number three assigns cluster numbers to each of the nodes,
-			immediately after a link has been added. The cluster number
-			determines the cluster group to which that specific node
-			belongs.</p>
-		<ol>
-			<li>
-				<p>The first step of this group of sub events is to
-					determine if the node has a cluster number assigned to
-					it. Each node has a corresponding cluster number in the
-					clusters array. If the value of clusters array at index
-					_node from_ is empty the node has not yet been
-					assigned a cluster. If the clusters array contains a
-					value then this is to be used as the current cluster
-					number on event 3.3.</p>
-			</li>
-			<li>
-				<p>If in event 3.2 the cluster number does not exist (the
-					clusters array value is empty) then the highest cluster
-					number within the clusters array must be chosen and
-					incremented by one for use in event 3.3.</p>
-			</li>
-			<li>
-				<p>Using the cluster number that was got from either event
-					3.2 or 3.3 the value should be assigned to the clusters
-					array index _node from_.</p>
-			</li>
-		</ol>
-	</li>
-</ol>
+1.  An initial lattice must be built. This should be an array of nodes (known
+    subsequently as the nodes array) initially set to the required lattice size
+    squared for a 2-dimensional lattice, or to the lattice size cubed for a
+    3dimensional lattice. As well as constructing a nodes array the construction
+    of a clusters array, that is of equal size, is also required. The nodes
+    array is used to store the _to_ node, and the clusters array stores the
+    cluster number to which the node is assigned.
+
+    e.g. for lattice size 200 the array would have to be:
+
+    -   2D - 200<sup>2</sup> = 40000
+    -   3D - 200<sup>3</sup> = 8000000
+
+    Each of the nodes within the array is a reference to a single node on the
+    lattice.
+
+1.  A link must be added between two nodes on the lattice by using the following
+    steps.
+
+    1.  A node must be chosen at random. This random node should be chosen
+        according to the rules of the simple Monte Carlo method (that is that
+        there is an equal probability of any node being chosen), refer to
+        section 1.2 for more information. If this node has not already got an
+        outgoing link to another node then we can continue to stage 2.2.
+    1.  A suitable check needs to be made to see if any of the surrounding nodes
+        are available to form a link to. On a 2-dimensional lattice the checks
+        need to be made to the nodes directly to the left, right, upper and
+        lower of the random nodes. In the 3-dimensional lattice the check needs
+        to also to the nodes in front and behind the random node. The check is
+        to see whether the value of the array at the random node value is empty
+        or not. The check on each of these nodes is to search the entire nodes
+        array to see how many _from nodes_ link to that check node. If the
+        number of \_from nodes \_linking to the check node is equal to or
+        greater than the value detailed in the specification (two) then the
+        check node is no good and must be discarded. Otherwise, if there are
+        less than two nodes linking to it, the check node is good and can be
+        used in the next stage.
+    1.  After 2.2 has been performed there should be several good or bad nodes
+        listed. A random choice is again needed to select one of the good nodes.
+        The random choice should again conform to the simple Monte Carlo method
+        and apply equal probabilities of each good choice being chosen.
+    1.  Once the chosen node has been selected then a link can be created. This
+        is recorded in the nodes array by settings the value at the index of the
+        _from_ node to the _to_ node.
+
+               e.g. if node 10 is connected to node 9 then: nodes array
+
+        (10) = 9
+
+1.  Event number three assigns cluster numbers to each of the nodes, immediately
+    after a link has been added. The cluster number determines the cluster group
+    to which that specific node belongs.
+
+    1. The first step of this group of sub events is to determine if the node
+       has a cluster number assigned to it. Each node has a corresponding
+       cluster number in the clusters array. If the value of clusters array at
+       index _node from_ is empty the node has not yet been assigned a cluster.
+       If the clusters array contains a value then this is to be used as the
+       current cluster number on event 3.3.
+    1. If in event 3.2 the cluster number does not exist (the clusters array
+       value is empty) then the highest cluster number within the clusters array
+       must be chosen and incremented by one for use in event 3.3.
+    1. Using the cluster number that was got from either event 3.2 or 3.3 the
+       value should be assigned to the clusters array index _node from_.
 
 As you can see for the task analysis events two and three loop continuously
 until each of the nodes has had a link and cluster number assigned to it
@@ -780,7 +746,7 @@ Figure 14, Hierarchical Task Analysis for building a lattice.
 > and easy to use to the degree that all the user sees is the task and not the
 > computer system at all
 >
-> <cite>Faulkner, 1998</cite>
+> _Faulkner, 1998_
 
 A successful user interface is one that can be used easily by the user to
 complete the job in hand. Human Computer Interaction (HCI) is used to study the
@@ -1615,20 +1581,20 @@ signed off at the second formal meeting.</p>
 <table>
 	<tr>
 		<td>
-			<p>Project Title: </p>
-			<p>Student Name: </p>
-			<p>Supervisors: </p>
+			Project Title:
+			Student Name:
+			Supervisors:
 		</td>
 		<td>
-			<p><b>Percolation on A Square Lattice</b></p>
-			<p><b>Gareth Flowers</b></p>
-			<p><b>Louise Richards</b></p>
+			<b>Percolation on A Square Lattice</b>
+			<b>Gareth Flowers</b>
+			<b>Louise Richards</b>
 		</td>
 	</tr>
 	<tr>
 		<td></td>
 		<td>
-			<p><b>Bernard Rayner</b></p>
+			<b>Bernard Rayner</b>
 		</td>
 	</tr>
 </table>
@@ -1983,17 +1949,20 @@ Student's Signature: Date:
 ### Lattice and Lattice App
 
 <img src="assets/image049.jpg">
-    	<img src="assets/image050.jpg">
+
+<img src="assets/image050.jpg">
 
 ### MainFrame and Settings
 
 <img src="assets/image051.jpg">
-    	<img src="assets/image052.jpg">
+
+<img src="assets/image052.jpg">
 
 ### ViewCluster and ViewGraph
 
 <img src="assets/image053.jpg">
-    	<img src="assets/image056.jpg">
+
+<img src="assets/image056.jpg">
 
 ### ViewLattice
 
