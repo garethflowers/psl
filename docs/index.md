@@ -119,7 +119,7 @@ lattice, which most can physically identify with a large sheet of graph paper.
 On this grid a random fraction of squares can be filled with a dot, the
 remainder of which remain empty.
 
-![figure1](assets/figure-1.png)
+![Figure 1](assets/figure-1.png)
 
 _**Figure 1**, a square lattice before percolation_
 
@@ -153,11 +153,11 @@ percolation (Figure 4) is very similar we are concerned with only lines of the
 lattice a dot is placed on the cross of two lines and a nearest neighbour is
 joined by a connecting line, opposed to a side.
 
-![Figure 3](assets/figure-3.jpg)
+![Figure 3](assets/figure-3.png)
 
 _**Figure 3**, Site percolation_
 
-![Figure 4](assets/figure-4.jpg)
+![Figure 4](assets/figure-4.png)
 
 _**Figure 4**, Bond percolation_
 
@@ -166,7 +166,7 @@ example A lattice is unrestricted in size and shape - depending on the
 application of the theory (refer to section 1.1.2). Examples of several
 different lattices are shown below in Figure 5.
 
-![Figure 5](assets/figure-5.jpg)
+![Figure 5](assets/figure-5.png)
 
 _**Figure 5**, A sample of regular lattices. (A) The Bethe lattice. (B) The
 honeycomb lattice. (C) The square lattice. (D) Kagom. (E) The triangular
@@ -294,15 +294,15 @@ There are three main types of molecules (clusters) produced:
 -   **Hyper Branched** - Have some branching.
 -   **Linear** - Has no branching, it is just a straight chain of molecules.
 
-![Figure 6](assets/figure-6.jpg)
+![Figure 6](assets/figure-6.png)
 
 _**Figure 6**, Linear Cluster._
 
-![Figure 7](assets/figure-7.jpg)
+![Figure 7](assets/figure-7.png)
 
 _**Figure 7**, Hyper-branched Cluster._
 
-![Figure 8](assets/figure-8.jpg)
+![Figure 8](assets/figure-8.png)
 
 _**Figure 8**, Dendrimet Cluster._
 
@@ -349,11 +349,11 @@ detail. This simulation uses site percolation with a probability factor that the
 user can change - and allowing the user to interactively learn about the effects
 of probability change (variance in `p`).
 
-![Figure 9](assets/figure-9.jpg)
+![Figure 9](assets/figure-9.png)
 
 Figure 9, 2D percolation simulation.
 
-![Figure 10](assets/figure-10.jpg)
+![Figure 10](assets/figure-10.png)
 
 Figure 10, 2D percolation simulation.
 
@@ -614,7 +614,7 @@ choices appeared to be JBuilder Foundation
 was to use JBuilder as this provides a large range of features and integrated
 compiling, and an added feature of error highlighting.
 
-![Figure 12](assets/figure-12.jpg)
+![Figure 12](assets/figure-12.png)
 
 Figure 12, JBuilders syntax colouring and error reporting.
 
@@ -644,7 +644,7 @@ The initial system can be split into three main sections:
 All these sections should be run from a central interface as shown in the simple
 class diagram below.
 
-![Figure 13](assets/figure-13.jpg)
+![Figure 13](assets/figure-13.png)
 
 Figure 13, Simple class diagram.
 
@@ -1020,7 +1020,7 @@ if((nodes[node_from][1] > -1) && (nodes[node_to][1] > -1)) {
 Once the loop has complete and every lattice is linked then the class will
 produce a random lattice of a given size, like the one shown in Figure 16.
 
-![Figure 16](assets/figure-16.jpg)
+![Figure 16](assets/figure-16.png)
 
 _**Figure 16**, Generated lattice (size 30 by 30)_
 
@@ -1045,13 +1045,13 @@ what is going on within the simulation.
 The output of the results of cluster and lattice analysis are displayed in a
 `JTextArea` component within one of the `JTabbedPane` views.
 
-![Figure 17](assets/figure-17.jpg)
+![Figure 17](assets/figure-17.png)
 
 _**Figure 17**, Output of results_
 
 ### 4.3.2 Graphs
 
-![Figure 18](assets/figure-18.jpg)
+![Figure 18](assets/figure-18.png)
 
 _**Figure 18**, Graph view of the simulation_
 
@@ -1060,7 +1060,7 @@ drawing shapes (i.e. lines and ovals) were used along with some text labels.
 
 ### 4.3.3 2-Dimensional View
 
-![Figure 19](assets/figure-19.jpg)
+![Figure 19](assets/figure-19.png)
 
 _**Figure 19**, The simulations 2D View._
 
@@ -1070,7 +1070,7 @@ areas on the lattice and the corresponding cluster will be highlighted.
 
 ### 4.3.4 3-Dimensional View
 
-![Figure 20](assets/figure-20.jpg)
+![Figure 20](assets/figure-20.png)
 
 _**Figure 20**, The simulations 3D view of a cluster._
 
@@ -1078,7 +1078,7 @@ The 3D view uses the 3D API to construct a virtual universe environment. The
 following diagram helps to convey the relationship of components needed to
 construct a universe.
 
-![Figure 21](assets/figure-21.jpg)
+![Figure 21](assets/figure-21.png)
 
 _**Figure 21**, diagram of a virtual universe (Palmer, 2001)._
 
